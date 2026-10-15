@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>PID Playground</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="js/playground.js"></script>
+  </head>
+  <body onload="main()">
+    <main>
+      <header>
+        <h1>PID Playground</h1>
+        <p class="subtitle">
+          A mass on a spring starts at 0. The controller pushes it toward the setpoint at 1.
+          Drag the gains and watch how it gets there.
+        </p>
+      </header>
+
+      <section class="card chart-card" aria-labelledby="chart-heading">
+        <h2 id="chart-heading" class="visually-hidden">Step response</h2>
+        <div class="legend" aria-hidden="true">
+          <span><i class="swatch response"></i>Position</span>
+          <span><i class="swatch setpoint"></i>Setpoint</span>
+        </div>
+        <canvas id="chart" role="img" aria-label="Step response chart of position over time">
+        </canvas>
+      </section>
+
+      <section class="card" aria-label="Response measurements">
+        <p id="status" class="status" aria-live="polite">Loading the simulator…</p>
+        <dl class="metrics">
+          <div><dt>Overshoot</dt><dd id="overshoot">—</dd></div>
+          <div><dt>Rise time</dt><dd id="rise-time">—</dd></div>
+          <div><dt>Settling time</dt><dd id="settling-time">—</dd></div>
+          <div><dt>Steady-state error</dt><dd id="steady-state-error">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="card controls" aria-label="Controller gains">
+        <label class="gain">
+          <span class="gain-name">K<sub>p</sub> <small>proportional</small></span>
+          <output id="kp-value" class="gain-value">—</output>
+          <input id="kp" type="range" min="0" max="50" step="0.1" value="10" />
+          <span class="hint">Pushes harder the farther it is from the setpoint.</span>
+        </label>
+        <label class="gain">
+          <span class="gain-name">K<sub>i</sub> <small>integral</small></span>
+          <output id="ki-value" class="gain-value">—</output>
+          <input id="ki" type="range" min="0" max="30" step="0.1" value="0" />
+          <span class="hint">Pushes harder the longer an error lasts.</span>
+        </label>
+        <label class="gain">
+          <span class="gain-name">K<sub>d</sub> <small>derivative</small></span>
+          <output id="kd-value" class="gain-value">—</output>
+          <input id="kd" type="range" min="0" max="15" step="0.1" value="0" />
+          <span class="hint">Resists fast motion, which damps oscillation.</span>
+        </label>
+        <button id="reset" type="button">Reset gains</button>
+      </section>
+
+      <footer>
+        Plant: m = 1 kg, c = 2 N·s/m, k = 1 N/m, so G(s) = 1 / (s² + 2s + 1).
+        Settling time uses a 2% band.
+      </footer>
+    </main>
+  </body>
+</html>
