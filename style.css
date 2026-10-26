@@ -50,8 +50,29 @@ h1 {
 }
 
 .subtitle {
-  margin: 4px 0 16px;
+  margin: 8px 0 16px;
   color: var(--muted);
+}
+
+.system-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.system-picker select {
+  flex: 1;
+  max-width: 340px;
+  min-height: 44px;
+  padding: 0 10px;
+  font: inherit;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
 }
 
 .card {
@@ -136,6 +157,20 @@ canvas {
   margin: 0;
   font-size: 1.15rem;
   font-variant-numeric: tabular-nums;
+}
+
+.metrics .wide {
+  grid-column: 1 / -1;
+}
+
+.effort-note {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.effort-note:empty {
+  display: none;
 }
 
 .gain {
