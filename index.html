@@ -19,7 +19,17 @@
         <p id="system-description" class="subtitle">Loading…</p>
       </header>
 
-      <section class="card chart-card" aria-labelledby="chart-heading">
+      <section class="card pinned-card" aria-label="Picture of the system">
+        <canvas id="diagram" role="img"
+          aria-label="Animated picture of the system, showing what is measured and what the controller sets">
+        </canvas>
+        <div class="playback">
+          <span id="playback-time" class="playback-time"></span>
+          <button id="replay" type="button">Replay</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="chart-heading">
         <h2 id="chart-heading" class="visually-hidden">Step response</h2>
         <div class="legend" aria-hidden="true">
           <span><i class="swatch response"></i><span id="legend-output">Output</span></span>

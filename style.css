@@ -9,6 +9,8 @@
   --chart-label: #6b7480;
   --chart-setpoint: #9aa3ad;
   --chart-response: #2563eb;
+  --effort: #d97706;
+  --warning: #dc2626;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +25,8 @@
     --chart-label: #8b94a0;
     --chart-setpoint: #6b7480;
     --chart-response: #6ea0ff;
+    --effort: #f59e0b;
+    --warning: #f87171;
   }
 }
 
@@ -83,9 +87,12 @@ h1 {
   margin-bottom: 14px;
 }
 
-/* On phones the sliders sit below the fold. Pin the chart so it stays in view while dragging. */
+/*
+ * On phones the sliders sit below the fold. Pin the system's picture so it stays in view while
+ * dragging; the chart is too tall to pin as well and leave room for the sliders.
+ */
 @media (max-width: 700px) {
-  .chart-card {
+  .pinned-card {
     position: sticky;
     top: 0;
     z-index: 1;
@@ -95,6 +102,25 @@ h1 {
     border-width: 0 0 1px;
     padding: 8px 16px;
   }
+}
+
+.playback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.playback-time {
+  font-variant-numeric: tabular-nums;
+}
+
+.playback button {
+  min-height: 36px;
+  padding: 0 14px;
 }
 
 .legend {
