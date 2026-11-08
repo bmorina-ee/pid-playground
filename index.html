@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=53e2d13-1794098152" />
-    <script src="js/playground.js?v=53e2d13-1794098152"></script>
+    <link rel="stylesheet" href="style.css?v=04dce65-1794098571" />
+    <script src="js/playground.js?v=04dce65-1794098571"></script>
   </head>
   <body onload="main()">
     <main>
@@ -57,6 +57,13 @@
             <p id="effort-note" class="effort-note"></p>
           </div>
         </dl>
+      </section>
+
+      <section class="card" aria-labelledby="challenge-heading">
+        <h2 id="challenge-heading" class="challenge-heading">Challenge: meet the spec</h2>
+        <p class="challenge-intro">Tune the gains below until every goal shows ✓.</p>
+        <ul id="challenge-goals" class="challenge-goals"></ul>
+        <p id="challenge-result" class="challenge-result" aria-live="polite"></p>
       </section>
 
       <section class="card controls" aria-label="Controller gains">

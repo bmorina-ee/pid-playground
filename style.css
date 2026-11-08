@@ -13,6 +13,8 @@
   --chart-response: #2563eb;
   --effort: #d97706;
   --warning: #dc2626;
+  --success: #15803d;
+  --success-surface: #dcfce7;
   /* Text sitting directly on the page background; the Background color picker overrides these. */
   --page-text: var(--text);
   --page-muted: var(--muted);
@@ -33,6 +35,8 @@
     --chart-response: #6ea0ff;
     --effort: #f59e0b;
     --warning: #f87171;
+    --success: #4ade80;
+    --success-surface: #14301f;
   }
 }
 
@@ -260,6 +264,48 @@ canvas {
   height: 36px;
   margin: 0;
   accent-color: var(--accent);
+}
+
+.challenge-heading {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.challenge-intro {
+  margin: 2px 0 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.challenge-goals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.challenge-goals li {
+  padding: 3px 0;
+}
+
+.challenge-goals .met {
+  color: var(--success);
+}
+
+.challenge-goals .unmet {
+  color: var(--muted);
+}
+
+.challenge-result {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.challenge-result.met {
+  color: var(--success);
+  background: var(--success-surface);
 }
 
 .real-limit {
