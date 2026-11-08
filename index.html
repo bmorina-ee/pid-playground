@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=04dce65-1794098571" />
-    <script src="js/playground.js?v=04dce65-1794098571"></script>
+    <link rel="stylesheet" href="style.css?v=1cb697b-1794098937" />
+    <script src="js/playground.js?v=1cb697b-1794098937"></script>
   </head>
   <body onload="main()">
     <main>
@@ -39,6 +39,7 @@
         <div class="legend" aria-hidden="true">
           <span><i class="swatch response"></i><span id="legend-output">Output</span></span>
           <span><i class="swatch setpoint"></i>Setpoint</span>
+          <span id="legend-sensor" hidden><i class="swatch sensor"></i>Sensor reading</span>
         </div>
         <canvas id="chart" role="img" aria-label="Step response chart of the output over time">
         </canvas>
@@ -46,6 +47,7 @@
 
       <section class="card" aria-label="Response measurements">
         <p id="status" class="status" aria-live="polite">Loading the simulator…</p>
+        <p id="noise-note" class="effort-note noise-note"></p>
         <dl class="metrics">
           <div><dt>Overshoot</dt><dd id="overshoot">—</dd></div>
           <div><dt>Rise time</dt><dd id="rise-time">—</dd></div>
@@ -92,6 +94,10 @@
         <label id="anti-windup-row" class="real-limit">
           <input id="anti-windup" type="checkbox" />
           <span>Anti-windup: pause Ki while maxed out, like real cruise controls do</span>
+        </label>
+        <label class="real-limit">
+          <input id="sensor-noise" type="checkbox" />
+          <span>Sensor noise: the sensor's reading wobbles by about 2%, like a real one</span>
         </label>
         <button id="reset" type="button">Reset gains</button>
       </section>

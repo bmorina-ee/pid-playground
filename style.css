@@ -11,6 +11,7 @@
   --chart-label: #6b7480;
   --chart-setpoint: #9aa3ad;
   --chart-response: #2563eb;
+  --chart-sensor: #9ca3af;
   --effort: #d97706;
   --warning: #dc2626;
   --success: #15803d;
@@ -33,6 +34,7 @@
     --chart-label: #8b94a0;
     --chart-setpoint: #6b7480;
     --chart-response: #6ea0ff;
+    --chart-sensor: #6b7280;
     --effort: #f59e0b;
     --warning: #f87171;
     --success: #4ade80;
@@ -159,7 +161,8 @@ h1 {
 
 .legend {
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 4px 16px;
   font-size: 0.85rem;
   color: var(--muted);
   margin-bottom: 6px;
@@ -176,6 +179,14 @@ h1 {
 
 .swatch.setpoint {
   border-top: 2px dashed var(--chart-setpoint);
+}
+
+.swatch.sensor {
+  border-top: 1px solid var(--chart-sensor);
+}
+
+.legend [hidden] {
+  display: none;
 }
 
 canvas {
