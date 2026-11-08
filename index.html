@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=1cb697b-1794098937" />
-    <script src="js/playground.js?v=1cb697b-1794098937"></script>
+    <link rel="stylesheet" href="style.css?v=8ef205b-1794099273" />
+    <script src="js/playground.js?v=8ef205b-1794099273"></script>
   </head>
   <body onload="main()">
     <main>
@@ -98,6 +98,10 @@
         <label class="real-limit">
           <input id="sensor-noise" type="checkbox" />
           <span>Sensor noise: the sensor's reading wobbles by about 2%, like a real one</span>
+        </label>
+        <label class="real-limit">
+          <input id="derivative-filter" type="checkbox" />
+          <span>Derivative filter: smooth the reading before Kd reacts, like real controllers do</span>
         </label>
         <button id="reset" type="button">Reset gains</button>
       </section>
