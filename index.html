@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=19d0745-1794097647" />
-    <script src="js/playground.js?v=19d0745-1794097647"></script>
+    <link rel="stylesheet" href="style.css?v=53e2d13-1794098152" />
+    <script src="js/playground.js?v=53e2d13-1794098152"></script>
   </head>
   <body onload="main()">
     <main>
@@ -81,6 +81,10 @@
         <label id="real-limit-row" class="real-limit">
           <input id="real-limit" type="checkbox" checked />
           <span id="real-limit-label">Real-world limit</span>
+        </label>
+        <label id="anti-windup-row" class="real-limit">
+          <input id="anti-windup" type="checkbox" />
+          <span>Anti-windup: pause Ki while maxed out, like real cruise controls do</span>
         </label>
         <button id="reset" type="button">Reset gains</button>
       </section>
