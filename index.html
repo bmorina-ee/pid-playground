@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=8ef205b-1794099273" />
-    <script src="js/playground.js?v=8ef205b-1794099273"></script>
+    <link rel="stylesheet" href="style.css?v=de75624-1794099455" />
+    <script src="js/playground.js?v=de75624-1794099455"></script>
   </head>
   <body onload="main()">
     <main>
@@ -87,23 +87,29 @@
           <input id="kd" type="range" min="0" max="15" step="0.1" value="0" />
           <span id="kd-hint" class="hint"></span>
         </label>
-        <label id="real-limit-row" class="real-limit">
-          <input id="real-limit" type="checkbox" checked />
-          <span id="real-limit-label">Real-world limit</span>
-        </label>
-        <label id="anti-windup-row" class="real-limit">
-          <input id="anti-windup" type="checkbox" />
-          <span>Anti-windup: pause Ki while maxed out, like real cruise controls do</span>
-        </label>
-        <label class="real-limit">
-          <input id="sensor-noise" type="checkbox" />
-          <span>Sensor noise: the sensor's reading wobbles by about 2%, like a real one</span>
-        </label>
-        <label class="real-limit">
-          <input id="derivative-filter" type="checkbox" />
-          <span>Derivative filter: smooth the reading before Kd reacts, like real controllers do</span>
-        </label>
         <button id="reset" type="button">Reset gains</button>
+
+        <details id="effects" class="effects">
+          <summary>
+            Real-world effects <span id="effects-count" class="effects-count"></span>
+          </summary>
+          <label id="real-limit-row" class="real-limit">
+            <input id="real-limit" type="checkbox" checked />
+            <span id="real-limit-label">Real-world limit</span>
+          </label>
+          <label id="anti-windup-row" class="real-limit">
+            <input id="anti-windup" type="checkbox" />
+            <span>Anti-windup: pause Ki while maxed out, like real cruise controls do</span>
+          </label>
+          <label class="real-limit">
+            <input id="sensor-noise" type="checkbox" />
+            <span>Sensor noise: the sensor's reading wobbles by about 2%, like a real one</span>
+          </label>
+          <label class="real-limit">
+            <input id="derivative-filter" type="checkbox" />
+            <span>Derivative filter: smooth the reading before Kd reacts, like real controllers do</span>
+          </label>
+        </details>
       </section>
 
       <footer id="model-details"></footer>

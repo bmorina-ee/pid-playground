@@ -319,6 +319,30 @@ canvas {
   background: var(--success-surface);
 }
 
+.effects {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.effects summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.effects-count {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.effects[open] summary {
+  margin-bottom: 8px;
+}
+
 .real-limit {
   display: flex;
   align-items: center;
