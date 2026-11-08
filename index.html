@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=c163c36-1793758640" />
-    <script src="js/playground.js?v=c163c36-1793758640"></script>
+    <link rel="stylesheet" href="style.css?v=19d0745-1794097647" />
+    <script src="js/playground.js?v=19d0745-1794097647"></script>
   </head>
   <body onload="main()">
     <main>
@@ -77,6 +77,10 @@
           <output id="kd-value" class="gain-value">—</output>
           <input id="kd" type="range" min="0" max="15" step="0.1" value="0" />
           <span id="kd-hint" class="hint"></span>
+        </label>
+        <label id="real-limit-row" class="real-limit">
+          <input id="real-limit" type="checkbox" checked />
+          <span id="real-limit-label">Real-world limit</span>
         </label>
         <button id="reset" type="button">Reset gains</button>
       </section>
