@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=fb3b8f0-1794522848" />
-    <script src="js/playground.js?v=fb3b8f0-1794522848"></script>
+    <link rel="stylesheet" href="style.css?v=f901ef2-1794524558" />
+    <script src="js/playground.js?v=f901ef2-1794524558"></script>
   </head>
   <body onload="main()">
     <main>
@@ -178,6 +178,7 @@
       <section class="card" aria-label="Response measurements">
         <p id="status" class="status" aria-live="polite">Loading the simulator…</p>
         <p id="noise-note" class="effort-note noise-note"></p>
+        <p id="hill-note" class="effort-note"></p>
         <dl class="metrics">
           <div><dt>Overshoot</dt><dd id="overshoot">—</dd></div>
           <div><dt>Rise time</dt><dd id="rise-time">—</dd></div>
@@ -238,6 +239,10 @@
           <label class="real-limit">
             <input id="derivative-filter" type="checkbox" />
             <span>Derivative filter: smooth the reading before Kd reacts, like real controllers do</span>
+          </label>
+          <label id="hill-row" class="real-limit">
+            <input id="hill" type="checkbox" />
+            <span id="hill-label">Hill</span>
           </label>
         </details>
       </section>
