@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=92ef7b7-1794522406" />
-    <script src="js/playground.js?v=92ef7b7-1794522406"></script>
+    <link rel="stylesheet" href="style.css?v=fb3b8f0-1794522848" />
+    <script src="js/playground.js?v=fb3b8f0-1794522848"></script>
   </head>
   <body onload="main()">
     <main>
@@ -111,25 +111,32 @@
           behind its target, the fuller the meter gets, and the fuller it is, the harder the
           controller presses the gas.
         </p>
-        <ol>
-          <li>
-            The car starts slow, so the meter fills: "I'm behind… still behind… still behind…"
-          </li>
-          <li>
-            But the gas pedal is <strong>already on the floor</strong> (the real-world limit). The
-            car can't go any faster, yet the meter keeps filling, because it doesn't know the pedal
-            is maxed out.
-          </li>
-          <li>
-            When the car finally reaches the target, the meter is <strong>huge</strong>, so the
-            controller keeps flooring it and the car <strong>flies past</strong> the target until
-            the meter drains.
-          </li>
-        </ol>
-        <p>That overshoot, caused by the overfilled meter, is <strong>windup</strong>.</p>
         <p>
-          <strong>Anti-windup</strong> is one rule: <em>while the pedal is on the floor, freeze the
-          meter.</em> It never overfills, so there's no big overshoot.
+          The car starts slow, so the meter fills: "I'm behind… still behind…" Soon the gas pedal
+          is <strong>on the floor</strong> (the real-world limit). What happens next is the
+          difference between windup and anti-windup:
+        </p>
+        <div class="compare">
+          <div>
+            <p class="compare-title">Without anti-windup: windup happens (the problem)</p>
+            <ol>
+              <li>The pedal is on the floor, but the meter <strong>keeps filling anyway</strong>.</li>
+              <li>The car reaches the target with the meter <strong>overfull</strong>.</li>
+              <li>So the controller keeps flooring it, and the car <strong>overshoots</strong>.</li>
+            </ol>
+          </div>
+          <div>
+            <p class="compare-title">With anti-windup: the fix</p>
+            <ol>
+              <li>The pedal is on the floor, so the meter <strong>freezes</strong>.</li>
+              <li>The car reaches the target with the meter <strong>not overfull</strong>.</li>
+              <li>So the controller eases off in time: <strong>little or no overshoot</strong>.</li>
+            </ol>
+          </div>
+        </div>
+        <p>
+          <strong>In one line:</strong> windup is the meter overfilling while the pedal can't go any
+          further; anti-windup stops it from overfilling.
         </p>
         <p>
           <strong>See it yourself:</strong> pick Car cruise control, set K<sub>i</sub> to about
