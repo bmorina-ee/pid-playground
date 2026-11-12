@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=5b47bfc-1794445851" />
-    <script src="js/playground.js?v=5b47bfc-1794445851"></script>
+    <link rel="stylesheet" href="style.css?v=92ef7b7-1794522406" />
+    <script src="js/playground.js?v=92ef7b7-1794522406"></script>
   </head>
   <body onload="main()">
     <main>
@@ -93,8 +93,7 @@
             hard, like a gas pedal that hits the floor.
           </li>
           <li>
-            <strong>Anti-windup:</strong> while the pedal is on the floor, K<sub>i</sub> would keep
-            "saving up" push it can't use, then overshoot later. Anti-windup tells it to pause.
+            <strong>Windup and anti-windup:</strong> see the next section.
           </li>
           <li>
             <strong>Sensor noise:</strong> real sensors flicker a little. The controller only sees
@@ -105,6 +104,38 @@
             so the push stays calm.
           </li>
         </ul>
+
+        <h3>Windup, with a frustration meter</h3>
+        <p>
+          Think of K<sub>i</sub> as a <strong>frustration meter</strong>: the longer the car is
+          behind its target, the fuller the meter gets, and the fuller it is, the harder the
+          controller presses the gas.
+        </p>
+        <ol>
+          <li>
+            The car starts slow, so the meter fills: "I'm behind… still behind… still behind…"
+          </li>
+          <li>
+            But the gas pedal is <strong>already on the floor</strong> (the real-world limit). The
+            car can't go any faster, yet the meter keeps filling, because it doesn't know the pedal
+            is maxed out.
+          </li>
+          <li>
+            When the car finally reaches the target, the meter is <strong>huge</strong>, so the
+            controller keeps flooring it and the car <strong>flies past</strong> the target until
+            the meter drains.
+          </li>
+        </ol>
+        <p>That overshoot, caused by the overfilled meter, is <strong>windup</strong>.</p>
+        <p>
+          <strong>Anti-windup</strong> is one rule: <em>while the pedal is on the floor, freeze the
+          meter.</em> It never overfills, so there's no big overshoot.
+        </p>
+        <p>
+          <strong>See it yourself:</strong> pick Car cruise control, set K<sub>i</sub> to about
+          100 and note the Overshoot. Then open Real-world effects and turn on Anti-windup: the
+          overshoot drops.
+        </p>
 
         <h3>Try this first</h3>
         <ol>
