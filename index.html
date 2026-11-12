@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=de75624-1794099455" />
-    <script src="js/playground.js?v=de75624-1794099455"></script>
+    <link rel="stylesheet" href="style.css?v=5b47bfc-1794445851" />
+    <script src="js/playground.js?v=5b47bfc-1794445851"></script>
   </head>
   <body onload="main()">
     <main>
@@ -23,6 +23,98 @@
         </div>
         <p id="system-description" class="subtitle">Loading…</p>
       </header>
+
+      <details class="card guide">
+        <summary>Guide: how this works</summary>
+
+        <h3>What this app does</h3>
+        <p>
+          It simulates a real system (a car, a motor, or a mass on a spring) being steered toward
+          a target by a <strong>PID controller</strong>, the most common controller in engineering.
+          You turn the controller's three dials and watch what happens.
+        </p>
+
+        <h3>The three dials</h3>
+        <p>Think of cruise control deciding how hard to press the gas.</p>
+        <ul>
+          <li>
+            <strong>K<sub>p</sub> (proportional): "How far am I from the target?"</strong> Far
+            away means push hard; close means push gently. On its own it usually stops a little
+            short of the target.
+          </li>
+          <li>
+            <strong>K<sub>i</sub> (integral): "How long have I been behind?"</strong> It keeps
+            adding push while there's still a gap, which closes the leftover gap. Too much makes
+            the system overshoot.
+          </li>
+          <li>
+            <strong>K<sub>d</sub> (derivative): "How fast am I closing in?"</strong> It eases off
+            early when the system is rushing toward the target, like a brake on overshooting.
+          </li>
+        </ul>
+
+        <h3>The picture and the chart</h3>
+        <p>
+          The <strong>picture</strong> replays the simulation: the blue label is what's
+          <em>measured</em> (like the car's speed), and the orange label and arrow are what the
+          controller <em>sets</em> (like the engine force). It turns red when the controller hits
+          a real limit. The <strong>chart</strong> shows the same run over time: the blue curve
+          is the system, the dashed line is the target, and the dot marks the moment the picture
+          is showing.
+        </p>
+
+        <h3>The numbers</h3>
+        <ul>
+          <li><strong>Overshoot:</strong> how far it goes past the target before coming back.</li>
+          <li><strong>Rise time:</strong> how quickly it gets most of the way there.</li>
+          <li>
+            <strong>Settling time:</strong> when it finally stays close to where it ends up.
+          </li>
+          <li>
+            <strong>Steady-state error:</strong> the gap left over at the end. K<sub>i</sub> is
+            what removes it.
+          </li>
+          <li>
+            <strong>Peak effort:</strong> the hardest the controller pushed, compared with what
+            real hardware can give.
+          </li>
+        </ul>
+
+        <h3>The challenge</h3>
+        <p>
+          Each system has a target to hit, like a homework problem. Every goal shows ✓ or ✗ as you
+          tune, and you've won when it says <strong>Spec met!</strong>
+        </p>
+
+        <h3>Real-world effects</h3>
+        <ul>
+          <li>
+            <strong>Real-world limit:</strong> real engines and power supplies can only push so
+            hard, like a gas pedal that hits the floor.
+          </li>
+          <li>
+            <strong>Anti-windup:</strong> while the pedal is on the floor, K<sub>i</sub> would keep
+            "saving up" push it can't use, then overshoot later. Anti-windup tells it to pause.
+          </li>
+          <li>
+            <strong>Sensor noise:</strong> real sensors flicker a little. The controller only sees
+            the flickery reading (the thin gray line), and K<sub>d</sub> overreacts to it.
+          </li>
+          <li>
+            <strong>Derivative filter:</strong> smooths the flicker before K<sub>d</sub> reacts,
+            so the push stays calm.
+          </li>
+        </ul>
+
+        <h3>Try this first</h3>
+        <ol>
+          <li>Pick <strong>Car cruise control</strong> and drag K<sub>p</sub> up: faster, but it
+            stops short of the target.</li>
+          <li>Raise K<sub>i</sub>: the gap closes, but watch the overshoot.</li>
+          <li>Open <strong>Real-world effects</strong> and turn on anti-windup: the overshoot
+            drops.</li>
+        </ol>
+      </details>
 
       <section class="card pinned-card" aria-label="Picture of the system">
         <canvas id="diagram" role="img"
