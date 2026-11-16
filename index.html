@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=3c38a67-1794866831" />
-    <script src="js/playground.js?v=3c38a67-1794866831"></script>
+    <link rel="stylesheet" href="style.css?v=689408e-1794867428" />
+    <script src="js/playground.js?v=689408e-1794867428"></script>
   </head>
   <body onload="main()">
     <main>
@@ -103,6 +103,19 @@
             <strong>Derivative filter:</strong> smooths the flicker before K<sub>d</sub> reacts,
             so the push stays calm.
           </li>
+          <li>
+            <strong>Hill</strong> (car only): partway through, the road turns uphill and gravity
+            pulls the car back. K<sub>p</sub> alone leaves it slower for good; K<sub>i</sub> keeps
+            adding push until it's back at the target speed.
+          </li>
+          <li>
+            <strong>Headwind</strong> (car only): a wind starts blowing against the car, adding
+            drag. Like the hill, it's a steady push that only K<sub>i</sub> fully makes up.
+          </li>
+          <li>
+            <strong>Delay</strong> (car only): the engine acts on each command late. A strong
+            controller then wobbles; see the section below.
+          </li>
         </ul>
 
         <h3>Windup, with a frustration meter</h3>
@@ -142,6 +155,57 @@
           <strong>See it yourself:</strong> pick Car cruise control, set K<sub>i</sub> to about
           100 and note the Overshoot. Then open Real-world effects and turn on Anti-windup: the
           overshoot drops.
+        </p>
+
+        <h3>The delay, with a shower</h3>
+        <p>
+          You know a shower where the water takes a few seconds to change temperature after you
+          turn the knob? That gap is a <strong>delay</strong>, and it's exactly what happens to the
+          car when the engine acts on each command late.
+        </p>
+        <ol>
+          <li>The water is too cold, so you turn the knob hotter. Nothing changes yet.</li>
+          <li>Still cold, so you turn it <strong>even hotter</strong>.</li>
+          <li>
+            The hot water finally arrives, far too hot. You turn it way back, and soon it's too
+            cold again.
+          </li>
+        </ol>
+        <p>
+          You're reacting to <strong>old news</strong>: the water you feel is from a few seconds
+          ago. The controller does the same with the car's speed, so it overcorrects back and
+          forth, and the car <strong>wobbles</strong>.
+        </p>
+        <div class="compare">
+          <div>
+            <p class="compare-title">Strong K<sub>p</sub> with a delay: wobbles (the problem)</p>
+            <ol>
+              <li>The car is slow, so the controller pushes hard, but the engine acts late.</li>
+              <li>By the time the push arrives, the car is already near the target.</li>
+              <li>It shoots past, the controller pulls back hard, also late: the car swings back
+                and forth.</li>
+            </ol>
+          </div>
+          <div>
+            <p class="compare-title">Gentler K<sub>p</sub>, or adding K<sub>d</sub>: calm</p>
+            <ol>
+              <li>Smaller corrections (a gentler K<sub>p</sub>) don't overshoot as far.</li>
+              <li>
+                K<sub>d</sub> eases off as soon as the car is speeding up fast, before it reaches
+                the target.
+              </li>
+              <li>Either way, the swings die out and the car settles.</li>
+            </ol>
+          </div>
+        </div>
+        <p>
+          <strong>In one line:</strong> with a delay, the controller reacts to where the car
+          <em>was</em>, so pushing too hard makes it overcorrect back and forth.
+        </p>
+        <p>
+          <strong>See it yourself:</strong> pick Car cruise control, open Real-world effects, turn
+          on Delay, and drag K<sub>p</sub> up to about 1500: the car wobbles. Then raise
+          K<sub>d</sub> to about 500: it calms down.
         </p>
 
         <h3>Try this first</h3>
