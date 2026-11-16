@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=689408e-1794867428" />
-    <script src="js/playground.js?v=689408e-1794867428"></script>
+    <link rel="stylesheet" href="style.css?v=6fb5518-1794867828" />
+    <script src="js/playground.js?v=6fb5518-1794867828"></script>
   </head>
   <body onload="main()">
     <main>
@@ -244,6 +244,7 @@
         <p id="noise-note" class="effort-note noise-note"></p>
         <p id="push-note" class="effort-note"></p>
         <p id="delay-note" class="effort-note"></p>
+        <p id="load-note" class="effort-note"></p>
         <dl class="metrics">
           <div><dt>Overshoot</dt><dd id="overshoot">—</dd></div>
           <div><dt>Rise time</dt><dd id="rise-time">—</dd></div>
@@ -312,6 +313,10 @@
           <label id="headwind-row" class="real-limit">
             <input id="headwind" type="checkbox" />
             <span id="headwind-label">Headwind</span>
+          </label>
+          <label id="load-row" class="real-limit">
+            <input id="heavy-load" type="checkbox" />
+            <span id="load-label">Heavy load</span>
           </label>
           <label id="delay-row" class="real-limit">
             <input id="delay" type="checkbox" />
