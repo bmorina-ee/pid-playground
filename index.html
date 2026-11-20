@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=dc3a2a1-1795132763" />
-    <script src="js/playground.js?v=dc3a2a1-1795132763"></script>
+    <link rel="stylesheet" href="style.css?v=3dea4b3-1795133239" />
+    <script src="js/playground.js?v=3dea4b3-1795133239"></script>
   </head>
   <body onload="main()">
     <main>
@@ -251,6 +251,7 @@
         <p id="push-note" class="effort-note"></p>
         <p id="delay-note" class="effort-note"></p>
         <p id="load-note" class="effort-note"></p>
+        <p id="friction-note" class="effort-note"></p>
         <dl class="metrics">
           <div><dt>Overshoot</dt><dd id="overshoot">—</dd></div>
           <div><dt>Rise time</dt><dd id="rise-time">—</dd></div>
@@ -319,6 +320,10 @@
           <label id="headwind-row" class="real-limit">
             <input id="headwind" type="checkbox" />
             <span id="headwind-label">Headwind</span>
+          </label>
+          <label id="friction-row" class="real-limit">
+            <input id="sticky-friction" type="checkbox" />
+            <span id="friction-label">Sticky friction</span>
           </label>
           <label id="load-row" class="real-limit">
             <input id="heavy-load" type="checkbox" />
