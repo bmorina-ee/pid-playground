@@ -128,17 +128,28 @@ h1 {
   font-weight: 600;
 }
 
-.system-picker select {
+.system-buttons {
   flex: 1;
-  max-width: 340px;
+  max-width: 360px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.system-button {
   min-height: 44px;
-  padding: 0 10px;
-  font: inherit;
-  font-weight: 400;
+  padding: 0 8px;
+  font-weight: 600;
   color: var(--text);
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+}
+
+/* The current system stands out, so it's obvious which one you're on. */
+.system-button.selected {
+  color: var(--card);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .card {

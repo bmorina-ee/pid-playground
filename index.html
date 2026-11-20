@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=fd7f2f8-1795135431" />
-    <script src="js/playground.js?v=fd7f2f8-1795135431"></script>
+    <link rel="stylesheet" href="style.css?v=976860e-1795212952" />
+    <script src="js/playground.js?v=976860e-1795212952"></script>
   </head>
   <body onload="main()">
     <main>
@@ -32,10 +32,11 @@
           </ul>
           <p>Here you can tune one yourself and see what each part does.</p>
         </section>
-        <label class="system-picker">
-          <span>System</span>
-          <select id="system"></select>
-        </label>
+        <div class="system-picker">
+          <span id="system-heading">System</span>
+          <div id="system-buttons" class="system-buttons" role="group"
+            aria-labelledby="system-heading"></div>
+        </div>
         <div class="background-picker">
           <label for="background">Background color</label>
           <input id="background" type="color" />
