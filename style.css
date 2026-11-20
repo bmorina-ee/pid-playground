@@ -501,3 +501,29 @@ footer {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* The guide's "what goes wrong / what helps" table. */
+.fits-together {
+  width: 100%;
+  margin: 4px 0 10px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.fits-together th,
+.fits-together td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.fits-together th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.fits-together td:last-child {
+  font-weight: 600;
+  width: 38%;
+}

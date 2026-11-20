@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=276de74-1795213439" />
-    <script src="js/playground.js?v=276de74-1795213439"></script>
+    <link rel="stylesheet" href="style.css?v=fff0bc4-1795213654" />
+    <script src="js/playground.js?v=fff0bc4-1795213654"></script>
   </head>
   <body onload="main()">
     <main>
@@ -80,6 +80,72 @@
             early when the system is rushing toward the target, like a brake on overshooting.
           </li>
         </ul>
+
+        <h3>How it all fits together</h3>
+        <p>
+          The three dials aren't separate: each one fixes a weakness of another, and each one can
+          cause a problem that another one fixes.
+        </p>
+        <ul>
+          <li>
+            <strong>K<sub>p</sub> does most of the work, but leaves a gap.</strong> More
+            K<sub>p</sub> gets there faster, but it overshoots more, and it still stops a little
+            short of the target.
+          </li>
+          <li>
+            <strong>K<sub>i</sub> closes the gap K<sub>p</sub> leaves,</strong> but because it
+            keeps adding push, it tends to make the overshoot worse.
+          </li>
+          <li>
+            <strong>K<sub>d</sub> calms the overshoot</strong> that K<sub>p</sub> and
+            K<sub>i</sub> cause, by easing off early.
+          </li>
+        </ul>
+        <p>
+          <strong>A simple tuning recipe:</strong> raise K<sub>p</sub> until it responds quickly;
+          if it overshoots, add K<sub>d</sub>; if it stops short of the target, add a little
+          K<sub>i</sub>. Then nudge all three until you're happy.
+        </p>
+        <p>The real-world effects each lean on one particular dial:</p>
+        <table class="fits-together">
+          <thead>
+            <tr><th>What goes wrong</th><th>What helps</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Real-world limit: the engine maxes out, so K<sub>i</sub> winds up and overshoots
+              </td>
+              <td>Anti-windup</td>
+            </tr>
+            <tr>
+              <td>Sensor noise: K<sub>d</sub> reacts to every flicker and gets twitchy</td>
+              <td>Derivative filter</td>
+            </tr>
+            <tr>
+              <td>Delay: a strong K<sub>p</sub> overcorrects and wobbles</td>
+              <td>Lower K<sub>p</sub>, or add K<sub>d</sub></td>
+            </tr>
+            <tr>
+              <td>Hill, headwind or sticky friction: a steady push holds the car back</td>
+              <td>K<sub>i</sub>, which keeps adding push until it's made up</td>
+            </tr>
+            <tr>
+              <td>Heavy load: the same push speeds the car up more slowly</td>
+              <td>More K<sub>p</sub> settles it closer to the target, but if the engine is
+                already maxed out, nothing makes the start faster</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>In one line:</strong> K<sub>p</sub> drives, K<sub>i</sub> finishes the job,
+          K<sub>d</sub> keeps it calm, and each real-world effect makes one of them matter more.
+        </p>
+        <p>
+          <strong>See it yourself</strong> on the Spring, where all three show clearly: at
+          K<sub>p</sub> 10 it overshoots about 37% and stops short. Add K<sub>i</sub> 5: the gap
+          closes, but the overshoot grows to about 44%. Then add K<sub>d</sub> 4: the overshoot
+          drops to about 13%.
+        </p>
 
         <h3>The picture and the chart</h3>
         <p>
