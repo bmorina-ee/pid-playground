@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=3dea4b3-1795133239" />
-    <script src="js/playground.js?v=3dea4b3-1795133239"></script>
+    <link rel="stylesheet" href="style.css?v=3312934-1795133512" />
+    <script src="js/playground.js?v=3312934-1795133512"></script>
   </head>
   <body onload="main()">
     <main>
@@ -122,6 +122,14 @@
             <strong>Delay</strong> (car only): the engine acts on each command late. A strong
             controller then wobbles; see the section below.
           </li>
+          <li>
+            <strong>Heavy load</strong> (car only): 500 kg of passengers and luggage. The same
+            push speeds a heavier car up more slowly, but it still ends at the same speed.
+          </li>
+          <li>
+            <strong>Sticky friction</strong> (car only): a stopped car needs a hard enough push to
+            start rolling, so a weak controller leaves it stuck; see the section below.
+          </li>
         </ul>
 
         <h3>Windup, with a frustration meter</h3>
@@ -212,6 +220,44 @@
           <strong>See it yourself:</strong> pick Car cruise control, open Real-world effects, turn
           on Delay, and drag K<sub>p</sub> up to about 1500: the car wobbles. Then raise
           K<sub>d</sub> to about 500: it calms down.
+        </p>
+
+        <h3>Sticky friction, with a heavy couch</h3>
+        <p>
+          Think of pushing a heavy couch across the floor. A gentle push does nothing at all. You
+          have to shove hard enough to <strong>break it free</strong>, and once it's sliding, it
+          takes less effort to keep it going. That's <strong>sticky friction</strong>, and the car
+          has it too: 400 N to get rolling, then 150 N resisting it while it moves.
+        </p>
+        <div class="compare">
+          <div>
+            <p class="compare-title">Too weak a push: stuck (the problem)</p>
+            <ol>
+              <li>With a small K<sub>p</sub>, the controller only pushes gently.</li>
+              <li>The push never reaches the 400 N it takes to get the car rolling.</li>
+              <li>So the car <strong>never moves</strong>, even though the controller is trying.</li>
+            </ol>
+          </div>
+          <div>
+            <p class="compare-title">A stronger K<sub>p</sub>, or K<sub>i</sub>: breaks free</p>
+            <ol>
+              <li>A bigger K<sub>p</sub> pushes harder right away and beats the 400 N.</li>
+              <li>
+                Or K<sub>i</sub> keeps adding push while the car sits still (the frustration meter
+                filling up) until it's enough.
+              </li>
+              <li>Either way, the car <strong>breaks free</strong> and starts rolling.</li>
+            </ol>
+          </div>
+        </div>
+        <p>
+          <strong>In one line:</strong> sticky friction holds a stopped car in place until the
+          push is strong enough to break it free.
+        </p>
+        <p>
+          <strong>See it yourself:</strong> pick Car cruise control, open Real-world effects, turn
+          on Sticky friction, and drag K<sub>p</sub> down to 10: the car stays stuck. Then raise
+          K<sub>i</sub> to about 5: after a moment it breaks free.
         </p>
 
         <h3>Try this first</h3>
