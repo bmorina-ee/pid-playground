@@ -141,9 +141,9 @@ h1 {
 
 .system-buttons {
   flex: 1;
-  max-width: 360px;
+  max-width: 440px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
 }
 
