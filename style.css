@@ -65,6 +65,17 @@ h1 {
   font-size: 1.6rem;
 }
 
+/* The current system's goal, set apart so it's the first thing you read about it. */
+.goal {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-weight: 600;
+}
+
 .why-pid {
   margin: 8px 0 4px;
   color: var(--page-muted);
