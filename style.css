@@ -65,6 +65,32 @@ h1 {
   font-size: 1.6rem;
 }
 
+.why-pid {
+  margin: 8px 0 4px;
+  color: var(--page-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.why-pid h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--page-text);
+}
+
+.why-pid p,
+.why-pid ul {
+  margin: 0 0 6px;
+}
+
+.why-pid ul {
+  padding-left: 20px;
+}
+
+.why-pid strong {
+  color: var(--page-text);
+}
+
 .subtitle {
   margin: 8px 0 16px;
   color: var(--page-muted);

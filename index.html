@@ -5,13 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=3312934-1795133512" />
-    <script src="js/playground.js?v=3312934-1795133512"></script>
+    <link rel="stylesheet" href="style.css?v=fd7f2f8-1795135431" />
+    <script src="js/playground.js?v=fd7f2f8-1795135431"></script>
   </head>
   <body onload="main()">
     <main>
       <header>
         <h1>PID Playground</h1>
+        <section class="why-pid" aria-labelledby="why-pid-heading">
+          <h2 id="why-pid-heading">Why PID controllers matter</h2>
+          <p>
+            A <strong>PID controller</strong> keeps something at a target automatically: it
+            measures how far off it is, and adjusts the push to close the gap. It's the most widely
+            used controller in engineering, in everything from factories to the devices around you.
+          </p>
+          <ul>
+            <li><strong>Cars:</strong> cruise control holds your speed, uphill or down.</li>
+            <li><strong>Drones:</strong> they stay level and hold their height in the wind.</li>
+            <li><strong>Heating and cooling:</strong> thermostats keep a room at one temperature.</li>
+            <li><strong>Robotics:</strong> motors move robot arms to exact positions.</li>
+            <li><strong>3D printing:</strong> the nozzle stays at the right melting temperature.</li>
+            <li>
+              <strong>Electrical engineering:</strong> power supplies hold a steady voltage while
+              the load changes.
+            </li>
+          </ul>
+          <p>Here you can tune one yourself and see what each part does.</p>
+        </section>
         <label class="system-picker">
           <span>System</span>
           <select id="system"></select>
