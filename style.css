@@ -141,9 +141,9 @@ h1 {
 
 .system-buttons {
   flex: 1;
-  max-width: 440px;
+  max-width: 520px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 6px;
 }
 
@@ -258,7 +258,7 @@ canvas {
 
 @media (min-width: 560px) {
   .metrics {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
