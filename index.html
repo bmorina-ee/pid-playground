@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=ac5e1e7-1795214183" />
-    <script src="js/playground.js?v=ac5e1e7-1795214183"></script>
+    <link rel="stylesheet" href="style.css?v=a95305c-1795559117" />
+    <script src="js/playground.js?v=a95305c-1795559117"></script>
   </head>
   <body onload="main()">
     <main>
@@ -130,6 +130,10 @@
               <td>K<sub>i</sub>, which keeps adding push until it's made up</td>
             </tr>
             <tr>
+              <td>Wind gust: a brief shove pushes the drone down</td>
+              <td>More K<sub>p</sub> and K<sub>d</sub>, which push back harder and sooner</td>
+            </tr>
+            <tr>
               <td>Heavy load: the same push speeds the car up more slowly</td>
               <td>More K<sub>p</sub> settles it closer to the target, but if the engine is
                 already maxed out, nothing makes the start faster</td>
@@ -205,6 +209,11 @@
           <li>
             <strong>Headwind</strong> (car only): a wind starts blowing against the car, adding
             drag. Like the hill, it's a steady push that only K<sub>i</sub> fully makes up.
+          </li>
+          <li>
+            <strong>Wind gust</strong> (drone only): a downdraft shoves the drone down for a
+            moment, then stops. It's over before K<sub>i</sub> can do much, so the dip depends on
+            how hard and fast K<sub>p</sub> and K<sub>d</sub> push back.
           </li>
           <li>
             <strong>Delay</strong> (car only): the engine acts on each command late. A strong
