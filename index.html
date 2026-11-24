@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>PID Playground</title>
-    <link rel="stylesheet" href="style.css?v=a95305c-1795559117" />
-    <script src="js/playground.js?v=a95305c-1795559117"></script>
+    <link rel="stylesheet" href="style.css?v=4610cb6-1795559660" />
+    <script src="js/playground.js?v=4610cb6-1795559660"></script>
   </head>
   <body onload="main()">
     <main>
@@ -126,7 +126,7 @@
               <td>Lower K<sub>p</sub>, or add K<sub>d</sub></td>
             </tr>
             <tr>
-              <td>Hill, headwind or sticky friction: a steady push holds the car back</td>
+              <td>Hill, headwind, sticky friction or a package: a steady push holds it back</td>
               <td>K<sub>i</sub>, which keeps adding push until it's made up</td>
             </tr>
             <tr>
@@ -222,6 +222,11 @@
           <li>
             <strong>Heavy load</strong> (car only): 500 kg of passengers and luggage. The same
             push speeds a heavier car up more slowly, but it still ends at the same speed.
+          </li>
+          <li>
+            <strong>Package pickup</strong> (drone only): partway through, the drone picks up a
+            0.5 kg package. It's heavier now, so the thrust that held it up isn't enough and it
+            sinks. Like the hill, it's a steady pull that only K<sub>i</sub> fully makes up.
           </li>
           <li>
             <strong>Sticky friction</strong> (car only): a stopped car needs a hard enough push to
