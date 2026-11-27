@@ -143,14 +143,14 @@ h1 {
   flex: 1;
   max-width: 760px;
   display: grid;
-  /* Rows of four on a phone, one row of eight where there's room. */
-  grid-template-columns: repeat(4, 1fr);
+  /* Rows of three on a phone, rows of five where there's room. */
+  grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 560px) {
   .system-buttons {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
