@@ -141,16 +141,16 @@ h1 {
 
 .system-buttons {
   flex: 1;
-  max-width: 600px;
+  max-width: 680px;
   display: grid;
-  /* Two rows of three on a phone, one row of six where there's room. */
-  grid-template-columns: repeat(3, 1fr);
+  /* Rows of four on a phone, one row of seven where there's room. */
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
 }
 
 @media (min-width: 560px) {
   .system-buttons {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
   }
 }
 
